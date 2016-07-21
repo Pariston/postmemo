@@ -1,0 +1,26 @@
+<div class="signin-wrapper">
+  <form [formGroup]="userForm" (ngSubmit)="service.registerUser(userForm.value)">
+    <p><input formControlName="login" class="input xl" type="text" placeholder="Podaj login"></p>
+    <p class="hideValidator" [class.showValidator]="!loginCtrl.valid && loginCtrl.touched">To pole jest wymagane.</p>
+    <p><input formControlName="password" class="input xl" type="password" placeholder="Podaj haslo" #password /></p>
+    <p class="hideValidator" [class.showValidator]="!passwordCtrl.valid && passwordCtrl.touched">To pole jest wymagane.</p>
+    <p><input formControlName="email" class="input xl" type="email" placeholder="Podaj adres e-mail" #email /></p>
+    <p class="hideValidator" [class.showValidator]="!emailCtrl.valid && emailCtrl.touched">To pole jest wymagane.</p>
+    <hr>
+    <p class="label center">Przedstawisz się nam?</p>
+    <hr>
+    <p><input formControlName="firstname" class="input xl" type="text" placeholder="Jak Ci na imię?" #firstName /></p>
+    <p class="hideValidator" [class.showValidator]="!firstnameCtrl.valid && firstnameCtrl.touched">To pole jest wymagane.</p>
+    <p><input formControlName="surname" class="input xl" type="text" placeholder="Jeszcze tylko nazwisko" #surname /></p>
+    <p class="hideValidator" [class.showValidator]="!surnameCtrl.valid && surnameCtrl.touched">To pole jest wymagane.</p>
+    <input type="radio" name="gender" value="male" (click)="service.setGender(male.value)" checked #male> Mężczyzna
+    <input type="radio" name="gender" value="female" (click)="service.setGender(female.value)" #female> Kobieta
+    <p><input class="btn btn-first btn-submit xl full-width" type="submit" value="Zarejestruj sie" [disabled]="!userForm.valid" /></p>
+  </form>
+
+  <p *ngIf="service.message" class="alert signin-alert"
+     [class.alert-warning]="service.problem"
+     [class.alert-success]="!service.problem">
+    {{service.message}}
+  </p>
+</div>

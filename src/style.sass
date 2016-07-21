@@ -1,0 +1,115 @@
+@import 'fonts/fonts.sass'
+@import 'colors.sass'
+
+body
+  font: 12px 'Geomanist-Regular'
+  padding: 0
+  margin: 0
+  background-color: #282828
+  color: #c4c4c4
+
+a
+  color: #eaeaea
+  text-decoration: none
+
+a:hover
+  color: $scarlet
+
+ul
+  padding: 0
+  margin: 0
+
+input, button
+  border-radius: 2px
+
+input:focus
+  outline: none !important
+  border: 1px solid $scarlet
+  box-shadow: 0 0 10px $scarlet
+
+hr
+  border: 1px double $scarlet
+
+.bold
+  font-weight: bold
+
+.input
+  padding: 8px 10px
+  background-color: #3f3f3f
+  border: 1px solid #3f3f3f
+  color: #eaeaea
+
+.btn
+  cursor: pointer
+  padding: 8px 10px
+  background-color: transparent
+  border-radius: 4px
+
+.btn[disabled]
+  background-color: #2f2f2f
+  color: #4f4f4f
+  border-color: #2f2f2f
+  cursor: not-allowed
+
+.btn[disabled]:hover
+  background-color: #2f2f2f
+  color: #4f4f4f
+  border-color: #2f2f2f
+
+.btn-first
+  border: 1px solid $scarlet
+
+.btn-first:hover
+  background-color: $scarlet
+  color: #282828
+
+.btn-second
+  border: 1px solid $hope
+
+.btn-second:hover
+  background-color: $hope
+  color: #282828
+
+.btn-submit
+  color: $scarlet
+  font-weight: bold
+
+.alert
+  display: inline-block
+  padding: 15px 20px
+  color: #fff
+  border-radius: 4px
+
+.alert-warning
+  background-color: $scarlet
+  text-shadow: $scarlet-text-shadow
+
+.alert-success
+  background-color: $hope
+  text-shadow: $hope-text-shadow
+
+// input sizes
+.xl
+  font-size: 15px
+  padding: 10px 20px
+  width: 458px
+
+.full-width
+  width: 100%
+
+.label
+  padding: 5px 20px
+  font-size: 15px
+  text-transform: uppercase
+  color: #fff
+
+.center
+  text-align: center
+
+input.ng-invalid.ng-touched
+  border-left: 5px solid $scarlet
+  width: 453px
+
+input.ng-valid
+  border-left: 5px solid $hope
+  width: 453px

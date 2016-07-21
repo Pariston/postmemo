@@ -1,0 +1,23 @@
+<div *ngIf="service.loggedInStatus()" class="user-block left">
+  Witaj {{service?.authentication?.login}}
+</div>
+
+<div id="outlet" [class.reset]="!service.loggedInStatus()">
+  <div id="header" class="top" [class.center]="!service.loggedInStatus()">
+    <div id="logo" [class.left]="service.loggedInStatus()" (click)="service.navigateToHomepage()">
+      <span>postmemo</span>
+    </div>
+    <ul *ngIf="service.loggedInStatus()" class="right">
+      <li><button *ngIf="service.loggedInStatus()" class="btn btn-submit" (click)="service.logOut()">Wyloguj sie</button></li>
+    </ul>
+    <!--Visible only to logged out users-->
+    <ul *ngIf="!service.loggedInStatus()" class="logged-out-menu">
+      <li><a class="btn btn-second" [routerLink]="['/login']">Zaloguj się</a></li>
+      <li>|</li>
+      <li><a class="btn btn-second" [routerLink]="['/register']">Stwórz konto</a></li>
+    </ul>
+    <!--/Visible only to logged out users-->
+
+  </div>
+  <router-outlet></router-outlet>
+</div>
