@@ -1,5 +1,20 @@
-<form (ngSubmit)="service.logIn(login.value, password.value)">
-  <p><input class="input" type="text" placeholder="Podaj login" #login /></p>
-  <p><input class="input" type="password" placeholder="Podaj haslo" #password /></p>
-  <p><input class="btn btn-submit" type="submit" value="Zaloguj sie" /></p>
-</form>
+<div class="signin-wrapper">
+  <form [formGroup]="loginForm" (ngSubmit)="loginService.logIn(loginForm.value)">
+    <p><input formControlName="login" class="input xl" type="text" placeholder="Podaj login" /></p>
+    <p class="hideValidator" [class.showValidator]="!loginCtrl.valid && loginCtrl.touched">To pole jest wymagane i powinno zawierać od 4 do 30 znaków.</p>
+    <p><input formControlName="password" class="input xl" type="password" placeholder="Podaj haslo" /></p>
+    <p class="hideValidator" [class.showValidator]="!passwordCtrl.valid && passwordCtrl.touched">To pole jest wymagane i powinno zawierać od 7 do 30 znaków.</p>
+    <p>
+      <input type="checkbox" id="rememberMe" (change)="loginService.setRememberMe()" />
+      <label for="rememberMe"></label>
+      <span class="rememberMe">Zapamiętaj mnie</span>
+    </p>
+    <p><input class="btn btn-first btn-submit xl full-width" type="submit" value="Zaloguj sie" [disabled]="!loginForm.valid" /></p>
+  </form>
+
+  <div *ngIf="loginService.message" class="alert signin-alert"
+       [class.alert-warning]="loginService.problem"
+       [class.alert-success]="!loginService.problem">
+    {{loginService.message}} <div *ngIf="!loginService.problem" class="signal"></div>
+  </div>
+</div>

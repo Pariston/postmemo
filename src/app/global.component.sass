@@ -7,15 +7,6 @@ $user-block-padding: 20px
 h1
   color: red
 
-.left
-  float: left
-
-.right
-  float: right
-
-.top
-  float: top
-
 #outlet
   margin-left: $user-block-width + (2 * $user-block-padding)
   padding: 20px
@@ -23,7 +14,7 @@ h1
     margin-left: $user-block-phone + (2 * $user-block-padding)
   #header
     background-color: #2f2f2f
-    padding: 10px 20px
+    padding: 15px 20px
     margin: -20px -20px 20px
     overflow: hidden
     #logo:hover
@@ -46,7 +37,6 @@ h1
 
     .logged-out-menu
       position: absolute
-      top: 0
       line-height: 60px
       right: 20px
 
@@ -57,13 +47,134 @@ h1
 
 .user-block
   position: fixed
-  background-color: #610218
+  background-color: #1f1f1f
+  //border-right: 1px dashed $hope
   bottom: 0
   top: 0
   padding: $user-block-padding
   width: $user-block-width
   @media(max-width: 900px)
     width: $user-block-phone
+  .user-main-menu
+    background: #1f1f1f
+    border-bottom: 1px solid $hope
+    padding: 15px 20px
+    height: 40px
+    margin: -20px -20px 0
+    .profile-dropdown
+      outline: none
+      display: inline-block
+      position: absolute
+      right: 20px
+      z-index: 9999
+      line-height: 30px
+      .fa
+        cursor: pointer
+    .profile-dropdown-menu
+      visibility: hidden
+      position: absolute
+      white-space: nowrap
+      list-style: none
+      background-color: white
+      color: #2f2f2f
+      padding: 10px 0
+      margin-top: 10px
+      opacity: 0
+      transition: opacity 0.5s linear
+      margin-left: -6px
+      border-radius: 4px
+      li
+        padding: 5px 20px
+        cursor: pointer
+        .fa
+          margin-right: 15px
+      li:hover
+        background: #eaeaea
+    .profile-dropdown-menu:before
+      content: ""
+      width: 0
+      height: 0
+      border-bottom: 5px solid white
+      border-left: 5px solid transparent
+      border-right: 5px solid transparent
+      position: absolute
+      top: -5px
+      margin-left: 5px
+
+    .profile-dropdown:focus .profile-dropdown-menu
+      visibility: visible
+      opacity: 1
+      outline: none
+
+    .credit
+      display: inline-block
+      font-size: 14px
+      margin-left: 20px
+      margin-top: 3px
+      color: white
+      small
+        color: #929292
+        display: block
+        margin-top: 2px
+
+  ul.navigation
+    visibility: hidden
+    opacity: 0
+    transition: visibility 0s, opacity 0.5s linear
+    position: absolute
+
+  ul.navigation li
+    list-style: none
+    cursor: pointer
+    padding: 17px 25px
+    margin: 0 -20px
+    font-size: 14px
+    -webkit-transition: 0.5s
+    transition: 0.5s
+    .fa
+      margin-right: 20px
+      font-size: 18px
+
+  ul.navigation li:hover
+    background-color: #3f3f3f
+    color: white
+
+  .navigation-title
+    cursor: pointer
+    color: white
+    background-color: #2f2f2f
+    padding: 17px 25px
+    margin: 0 -20px
+    font-size: 14px
+    -webkit-transition: 0.5s
+    transition: 0.5s
+    .fa
+      position: absolute
+      right: 20px
+      margin-top: 4px
+      font-size: smaller
+      vertical-align: middle
+      display: inline-block
 
 .reset
   margin: 0 !important
+
+.avatar-mini
+  width: 70px
+  height: 70px
+  margin-top: -15px
+  margin-left: -20px
+  border-radius: 0px
+  float: left
+  background-color: #3d3d3d
+
+.show
+  visibility: visible !important
+  opacity: 1 !important
+  position: relative !important
+
+.showProfile
+  visibility: visible !important
+
+.hideProfile
+  visibility: hidden !important

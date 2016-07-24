@@ -1,23 +1,48 @@
-<div *ngIf="service.loggedInStatus()" class="user-block left">
-  Witaj {{service?.authentication?.login}}
+<div *ngIf="globalService._authentication" class="user-block left">
+  <div class="user-main-menu">
+    <img src="{{userPhotoURL}}" class="avatar-mini"/>
+    <div class="credit">
+      <div tabindex="0" class="profile-dropdown"><i class="fa fa-sort-desc" aria-hidden="true"></i>
+      <ul class="profile-dropdown-menu">
+        <li><i class="fa fa-user" aria-hidden="true"></i>Profil</li>
+        <li><i class="fa fa-cog" aria-hidden="true"></i>Ustawienia</li>
+        <li (click)="globalService.logOut()"><i class="fa fa-sign-out" aria-hidden="true"></i>Wyloguj się</li>
+      </ul>
+      </div>
+      {{userName || userLogin}}
+      <small>{{userEmail}}</small>
+    </div>
+  </div>
+  <!--<div class="something"></div>-->
+  <div class="navigation-title" (click)="manageNavigation()">Nawigacja <i class="fa" [class.fa-minus]="navigationExpanded" [class.fa-plus]="!navigationExpanded" aria-hidden="true"></i></div>
+  <ul class="navigation" [class.show]="navigationExpanded">
+    <li><i class="fa fa-home fa-5" aria-hidden="true"></i> Strona główna</li>
+    <li><i class="fa fa-users" aria-hidden="true"></i>Użytkownicy</li>
+    <li><i class="fa fa-heart" aria-hidden="true"></i>Moje subskrypcje</li>
+  </ul>
+  <div class="navigation-title" (click)="manageProfileNavigation()">Profil <i class="fa" [class.fa-minus]="navigationProfileExpanded" [class.fa-plus]="!navigationProfileExpanded" aria-hidden="true"></i></div>
+  <ul class="navigation" [class.show]="navigationProfileExpanded">
+    <li><i class="fa fa-home fa-5" aria-hidden="true"></i> Strona główna</li>
+    <li><i class="fa fa-users" aria-hidden="true"></i>Użytkownicy</li>
+    <li><i class="fa fa-heart" aria-hidden="true"></i>Moje subskrypcje</li>
+  </ul>
 </div>
 
-<div id="outlet" [class.reset]="!service.loggedInStatus()">
-  <div id="header" class="top" [class.center]="!service.loggedInStatus()">
-    <div id="logo" [class.left]="service.loggedInStatus()" (click)="service.navigateToHomepage()">
+<div id="outlet" [class.reset]="!globalService._authentication">
+  <div id="header" class="top" [class.center]="!globalService._authentication">
+    <div id="logo" [class.left]="globalService._authentication" (click)="globalService.navigateToHomepage()">
       <span>postmemo</span>
     </div>
-    <ul *ngIf="service.loggedInStatus()" class="right">
-      <li><button *ngIf="service.loggedInStatus()" class="btn btn-submit" (click)="service.logOut()">Wyloguj sie</button></li>
+    <ul *ngIf="globalService._authentication" class="right">
+
     </ul>
     <!--Visible only to logged out users-->
-    <ul *ngIf="!service.loggedInStatus()" class="logged-out-menu">
+    <ul *ngIf="!globalService._authentication" class="logged-out-menu">
       <li><a class="btn btn-second" [routerLink]="['/login']">Zaloguj się</a></li>
       <li>|</li>
       <li><a class="btn btn-second" [routerLink]="['/register']">Stwórz konto</a></li>
     </ul>
     <!--/Visible only to logged out users-->
-
   </div>
   <router-outlet></router-outlet>
 </div>

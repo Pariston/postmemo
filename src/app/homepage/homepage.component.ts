@@ -9,10 +9,8 @@ import { GlobalService } from '../global.service';
   providers: [ GlobalService ]
 })
 export class HomepageComponent implements OnInit {
+  constructor(private globalService: GlobalService) {}
 
-  constructor(private service: GlobalService) {}
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

@@ -1,8 +1,9 @@
 @import 'fonts/fonts.sass'
 @import 'colors.sass'
+@import "fonts/font-awesome/scss/font-awesome.scss"
 
 body
-  font: 12px 'Geomanist-Regular'
+  font: 12px 'Geomanist-Regular', FontAwesome
   padding: 0
   margin: 0
   background-color: #282828
@@ -15,7 +16,7 @@ a
 a:hover
   color: $scarlet
 
-ul
+ul, ul li
   padding: 0
   margin: 0
 
@@ -106,10 +107,198 @@ hr
 .center
   text-align: center
 
-input.ng-invalid.ng-touched
+input.ng-invalid.ng-dirty
   border-left: 5px solid $scarlet
   width: 453px
 
-input.ng-valid
+input.ng-valid.ng-dirty
   border-left: 5px solid $hope
   width: 453px
+
+.spinner
+  width: 60px
+  height: 60px
+  position: absolute
+  top: 50%
+  left: 50%
+  margin: -30px 0 0 -30px
+  animation: rotate 1.4s infinite ease-in-out, background 1.4s infinite ease-in-out alternate
+
+.spinner-mini
+  width: 20px
+  height: 20px
+  margin: 5px 5px -5px 5px
+  display: inline-block
+  animation: rotate 1.4s infinite ease-in-out, background 1.4s infinite ease-in-out alternate
+
+@keyframes rotate
+  0%
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+
+  50%
+    transform: perspective(120px) rotateX(-180deg) rotateY(0deg)
+
+  100%
+    transform: perspective(120px) rotateX(-180deg) rotateY(-180deg)
+
+@keyframes background
+  0%
+    background-color: $scarlet
+
+  100%
+    background-color: $hope
+
+.page-loading
+  font-weight: bold
+  font-size: 14px
+  position: absolute
+  top: 50%
+  margin-top: 50px
+  left: 50%
+  margin-left: -58.5365px
+
+.signal
+  border: 5px solid #fff
+  border-radius: 10px
+  height: 10px
+  margin-bottom: -5px
+  margin-left: 10px
+  opacity: 0
+  display: inline-block
+  width: 10px
+  animation: pulsate 1.2s ease-out
+  animation-iteration-count: infinite
+
+@keyframes pulsate
+  0%
+    transform: scale(.1)
+    opacity: 0.0
+
+  50%
+    opacity: 1
+
+  100%
+    transform: scale(1.2)
+    opacity: 0
+
+.required
+  position: absolute
+  margin-left: -20px
+  font-weight: bold
+  color: $scarlet
+  font-size: 20px
+
+.optional
+  position: absolute
+  margin-left: -20px
+  font-weight: bold
+  color: $hope
+
+input[type="radio"]
+  visibility: hidden
+  position: absolute
+
+
+input[type="radio"] + label
+  cursor: pointer
+  vertical-align: middle
+  margin-right: 10px
+  display: inline-block
+  background: #4f4f4f
+  padding: 4px 11px 4px 4px
+  border-radius: 4px
+  font-size: 11px
+
+input[type="radio"] + label:before
+  border-radius: 4px
+  background: $scarlet
+  height: 15px
+  width: 15px
+  display: inline-block
+  content: "\00a0"
+  margin-right: 10px
+  font-size: 9px
+  line-height: 15px
+  padding: 2px
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75)
+  -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75)
+  box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75)
+  border: 1px solid #484848
+
+input[type="radio"]:checked + label:before
+  border-radius: 4px
+  background: $hope
+  height: 15px
+  width: 15px
+  display: inline-block
+  content: "\f00c"
+  margin-right: 10px
+  color: white
+  text-align: center
+  font-size: 9px
+  line-height: 15px
+  padding: 2px
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75)
+  -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75)
+  box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75)
+  border: 1px solid #484848
+
+input[type="checkbox"]
+  visibility: hidden
+  position: absolute
+
+input[type="checkbox"] + label
+  position: absolute
+  cursor: pointer
+  vertical-align: middle
+  margin-right: 10px
+  display: inline-block
+  background: #4f4f4f
+  padding: 4px
+  border-radius: 21px
+  font-size: 11px
+  width: 46px
+  height: 21px
+
+input[type="checkbox"] + label:before
+  position: absolute
+  left: 4px
+  height: 15px
+  width: 15px
+  padding: 2px
+  content: "\f00d"
+  line-height: 15px
+  text-align: center
+  -webkit-transition: 0.7s
+  transition: 0.7s
+  background: #282828
+  border-radius: 21px
+  -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.45)
+  -moz-box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.45)
+  box-shadow: inset 0px 0px 5px 0px rgba(0, 0, 0, 0.45)
+  border: 1px solid #484848
+
+input[type="checkbox"]:checked + label:before
+  left: 29px
+  -webkit-transition: 0.7s
+  transition:  0.7s
+  content: "\f00c"
+  line-height: 15px
+  text-align: center
+  font-size: 9px
+  background: $hope
+
+.left
+  float: left
+
+.right
+  float: right
+
+.top
+  float: top
+
+.hope
+  color: $hope
+
+.scarlet
+  color: $scarlet

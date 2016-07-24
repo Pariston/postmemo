@@ -1,0 +1,55 @@
+@import '../../colors.sass'
+
+.post-body:hover .post-menu
+  visibility: visible
+.post-body
+  margin-bottom: 20px
+  width: 70%
+  padding: 20px
+  font-size: 13px
+  background-color: #1f1f1f
+  -webkit-border-radius: 4px
+  -moz-border-radius: 4px
+  border-radius: 4px
+  .post-menu
+    margin-top: 10px
+    visibility: hidden
+    color: white
+    ul
+      list-style: none
+      li
+        display: inline-block
+        margin-right: 20px
+  .post-header
+    display: flex
+    .post-options
+      margin-left: auto
+      font-size: 17px
+      align-self: center
+      i
+        margin-left: 5px
+    .credit
+      align-self: center
+      small
+        display: block
+    .photo
+      width: 50px
+      height: 50px
+      -webkit-border-radius: 4px
+      -moz-border-radius: 4px
+      border-radius: 4px
+      float: left
+      margin-right: 20px
+  .post-content
+    padding: 20px 0px 0px
+  .post-footer
+    padding: 10px 20px
+    background: #2f2f2f
+    margin: 20px -20px -20px
+    border-radius: 0 0 4px 4px
+  .tags
+    color: white
+  .male
+    color: $hope
+  .female
+    color: $scarlet

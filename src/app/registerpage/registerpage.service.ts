@@ -1,42 +1,50 @@
 import { Injectable } from '@angular/core';
 import { AngularFire } from 'angularfire2';
+import { GlobalService } from '../global.service';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class RegisterpageService {
-  users: any = [];
   message: string = "";
   userGender: string = "male";
   problem: boolean = false;
 
-  constructor(private af: AngularFire, private router: Router) {
-    af.database.list('/users')
-      .subscribe(response => {
-        this.users = response.map(item => item.$key.toLowerCase());
-    })
-  }
+  constructor(private af: AngularFire, private globalService: GlobalService, private router: Router) {}
 
   setGender(gender: string) {
     this.userGender = gender;
   }
 
-  registerUser(login: string, password: string, email: string, firstName: string, surname: string) {
-    if(this.users.includes(login.toLocaleLowerCase())) {
+  registerUser(form: any) {
+    let usersLogins: any = this.globalService.users.map(item => item.$key.toLowerCase());
+    let usersEmails: any = this.globalService.users.map(item => item.email.toLowerCase());
+
+    if(usersLogins.includes(form.login.toLowerCase())) {
       this.problem = true;
       this.message = "Podany login jest zajęty.";
-    } else {
+    }
+    else if(usersEmails.includes(form.email.toLowerCase())) {
+      this.problem = true;
+      this.message = "Podany adres email jest zajęty.";
+    }
+    else {
       this.message = "";
-      this.af.database.object('/users/' + login).set({
+      this.af.database.object('/users/' + form.login).set({
         photoURL: 'images/default-photo.png',
-        password: password,
-        email: email,
-        firstName: firstName,
-        surname: surname,
+        password: form.password,
+        email: form.email,
+        firstname: form.firstname,
+        surname: form.surname,
         gender: this.userGender
       }).then(_ => {
         this.problem = false;
-        if(this.userGender === 'female') this.message = "Brawo! Za chwilę zostaniesz przekierowana do ekranu logowania. Nie uciekaj : )";
-        else this.message = "Brawo! Za chwilę zostaniesz przekierowany do ekranu logowania. Nie uciekaj!";
+        let name = form.firstname || form.login;
+        if(this.userGender === 'female') this.message = "Cześć " + name + "! Za chwilę zostaniesz przekierowana do ekranu logowania.";
+        else this.message = "Cześć " + name + "! Za chwilę zostaniesz przekierowany do ekranu logowania.";
+
+        setTimeout(() => {
+          this.router.navigate(['/login']);
+        }, 3000)
       })
     }
   }
