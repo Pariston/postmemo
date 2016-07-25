@@ -1,3 +1,7 @@
+<div *ngIf="globalService._authentication" class="body-block right">
+xx
+</div>
+
 <div *ngIf="globalService._authentication" class="user-block left">
   <div class="user-main-menu">
     <img src="{{userPhotoURL}}" class="avatar-mini"/>
@@ -34,7 +38,11 @@
       <span>postmemo</span>
     </div>
     <ul *ngIf="globalService._authentication" class="right">
-
+      <li><i class="fa fa-search" aria-hidden="true"></i></li>
+      <li><i class="fa fa-envelope" aria-hidden="true"></i></li>
+      <li><i class="fa fa-star" aria-hidden="true"></i></li>
+      <li><i class="fa fa-bullhorn" aria-hidden="true"></i></li>
+      <li><i class="fa fa-bars" aria-hidden="true"></i></li>
     </ul>
     <!--Visible only to logged out users-->
     <ul *ngIf="!globalService._authentication" class="logged-out-menu">
@@ -44,5 +52,7 @@
     </ul>
     <!--/Visible only to logged out users-->
   </div>
-  <router-outlet></router-outlet>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </div>

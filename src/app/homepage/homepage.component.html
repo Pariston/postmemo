@@ -1,3 +1,11 @@
+<div class="editor">
+  <ckeditor
+    [(ngModel)]="ckeditorContent"
+    [config]="{ skin: 'moono-dark'}"
+  >
+  </ckeditor>
+</div>
+
 <div class="post-body">
   <div class="post-header">
     <img src="{{globalService._authentication.photoURL}}" class="photo" />

@@ -17,7 +17,8 @@ module.exports = function(defaults) {
       'rxjs/**/*.+(js|js.map)',
       '@angular/**/*.+(js|js.map)',
       'angularfire2/**/*.js',
-      'firebase/*.js'
+      'firebase/*.js',
+      'ng2-ckeditor/lib/*.+(js|js.map)'
     ]
   });
 };
