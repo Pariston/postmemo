@@ -13,10 +13,16 @@ import { CKEditor } from 'ng2-ckeditor';
 export class HomepageComponent implements OnInit {
   constructor(private globalService: GlobalService) {}
 
-  content: any = "<b>lelelE</b>";
-  print(something) {
-    console.log();
+  editorDisplayed: boolean = false;
+
+  showEditor() {
+    this.editorDisplayed = true;
   }
+
+  cancel() {
+    this.editorDisplayed = false;
+  }
+  
   ngOnInit() {}
 
 }

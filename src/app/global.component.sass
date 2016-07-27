@@ -14,7 +14,8 @@ h1
     margin-left: $user-block-phone + (2 * $user-block-padding)
   #header
     display: flex
-    background-color: #2f2f2f
+    background-color: white
+    color: #6a727a
     padding: 15px 20px
     margin: -20px -20px 20px
     overflow: hidden
@@ -30,7 +31,7 @@ h1
       li:hover
         color: white
     #logo
-      background: url("images/owl.png") no-repeat left center
+      background: url("images/owl-dark.png") no-repeat left center
       line-height: 35px
       display: inline-block
       height: 40px
@@ -38,7 +39,7 @@ h1
       font-size: 20px
       vertical-align: middle
       font-weight: bold
-      color: #fff
+      //color: #fff
       cursor: pointer
 
       span
@@ -76,8 +77,8 @@ h1
   @media(max-width: 900px)
     width: $user-block-phone
   .user-main-menu
-    background: #1f1f1f
-    border-bottom: 1px solid $hope
+    background: $hope
+    //border-bottom: 1px solid $hope
     padding: 15px 20px
     height: 40px
     margin: -20px -20px 0
@@ -133,7 +134,7 @@ h1
       margin-top: 3px
       color: white
       small
-        color: #929292
+        //color: #929292
         display: block
         margin-top: 2px
 
@@ -162,7 +163,8 @@ h1
   .navigation-title
     cursor: pointer
     color: white
-    background-color: #2f2f2f
+    //background-color: #2f2f2f
+    border-left: 5px solid $hope
     padding: 17px 25px
     margin: 0 -20px
     font-size: 14px
