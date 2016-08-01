@@ -36,10 +36,10 @@ CKEDITOR.editorConfig = function( config ) {
   // Simplify the dialog windows.
   config.removeDialogTabs = 'image:advanced;link:advanced';
   config.toolbar = [
-    { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', '-', 'RemoveFormat']},
+    { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat']},
     { name: 'links', items: ['Link', 'Unlink']},
     { name: 'insert', items: ['Image', 'Table', 'HorizontalRule', 'SpecialChar']},
-    { name: 'paragraphs', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote']},
+    { name: 'paragraphs', items: ['NumberedList', 'BulletedList', 'Outdent', 'Indent', 'Blockquote']},
     { name: 'tools', items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']}
   ]
   config.height = 100

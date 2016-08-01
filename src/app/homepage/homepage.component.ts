@@ -1,17 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from '../global.service';
-import { CKEditor } from 'ng2-ckeditor';
+import { EditorComponent } from '../reusable/editor/editor';
+import { ViewChild } from '@angular/core';
 
 @Component({
   moduleId: module.id,
   selector: 'app-homepage',
   templateUrl: 'homepage.component.html',
   styleUrls: ['homepage.component.css'],
-  providers: [ GlobalService ],
-  directives: [ CKEditor ]
+  directives: [ EditorComponent ],
+  providers: [ GlobalService ]
 })
 export class HomepageComponent implements OnInit {
-  constructor(private globalService: GlobalService) {}
+  @ViewChild(EditorComponent) editor: EditorComponent;
+
+  constructor(private globalService: GlobalService) {
+    //console.log(this.editor.lel());
+  }
 
   editorDisplayed: boolean = false;
 
@@ -22,7 +27,7 @@ export class HomepageComponent implements OnInit {
   cancel() {
     this.editorDisplayed = false;
   }
-  
+
   ngOnInit() {}
 
 }

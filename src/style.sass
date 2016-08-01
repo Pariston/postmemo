@@ -45,9 +45,11 @@ p
 
 .btn
   cursor: pointer
-  padding: 10px 20px
+  font-weight: normal
+  padding: 15px 35px
+  text-transform: uppercase
   background-color: transparent
-  border-radius: 4px
+  border-radius: 0
 
 .btn[disabled]
   background-color: #2f2f2f
@@ -69,15 +71,33 @@ p
   color: #282828
 
 .btn-second
-  color: $hope
-  border: 1px solid $hope
+  position: relative
+  transition: 0.5s
+  background-color: #3a3a3a
+  color: white
+  font-weight: normal
+  border: none
 
 .btn-second:hover
-  background-color: $hope
+  background-color: white
   color: #282828
 
-.btn-submit
-  font-weight: bold
+.btn-second:before
+  font-family: FontAwesome
+  content: "\f27a"
+  vertical-align: middle
+  line-height: 45px
+  padding: 0 10px
+  color: white
+  width: 30px
+  height: 100%
+  top: 0
+  left: -50px
+  background: #6a727a
+  position: absolute
+
+//.btn-submit
+//  font-weight: bold
 
 .alert
   display: inline-block
@@ -307,6 +327,9 @@ input[type="checkbox"]:checked + label:before
 .scarlet
   color: $scarlet
 
-.cke_contents
-  border: solid 1px #696969
-  background-color: #000 !important
+.photo
+  border-radius: 4px
+
+.photo-medium
+  width: 50px
+  height: 50px

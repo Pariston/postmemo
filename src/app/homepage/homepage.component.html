@@ -1,19 +1,12 @@
 <div class="editor">
-  <p *ngIf="editorDisplayed"><ckeditor
-    [(ngModel)]="ckeditorContent"
-    [config]="{ skin: 'moono-dark'}"
-  >
-  </ckeditor></p>
-  <p *ngIf="!editorDisplayed"><button class="btn btn-second btn-submit right" (click)="showEditor()">Napisz coś</button></p>
-  <div *ngIf="editorDisplayed" class="post-write-container">
-    <ul class="post-write">
-      <li><button class="btn btn-second btn-submit right" (click)="cancel()">Anuluj</button></li>
-      <li><button class="btn btn-second btn-submit right">Dodaj wpis</button></li>
-    </ul>
+  <div class="editor-body" *ngIf="editorDisplayed">
+    <editor [postMode]="true"></editor>
   </div>
+  <p *ngIf="!editorDisplayed"><button class="btn btn-second btn-submit right" (click)="showEditor()">Napisz coś</button></p>
 </div>
 
 <div class="post-body">
+
   <div class="post-header">
     <img src="{{globalService._authentication.photoURL}}" class="post-photo male" />
     <div class="credit">
@@ -22,9 +15,10 @@
     </div>
     <div class="post-options">
       <i class="fa fa-external-link-square" aria-hidden="true"></i>
-      <i class="fa fa-plus-square hope" aria-hidden="true"></i>
+      <i class="fa fa-plus-square" aria-hidden="true"></i>
     </div>
   </div>
+
   <div class="post-content">
     <!-- start slipsum code -->
 
@@ -54,7 +48,7 @@
     </div>
     <div class="post-options">
       <i class="fa fa-external-link-square" aria-hidden="true"></i>
-      <i class="fa fa-plus-square hope" aria-hidden="true"></i>
+      <i class="fa fa-plus-square" aria-hidden="true"></i>
 
     </div>
   </div>
@@ -86,7 +80,7 @@
     </div>
     <div class="post-options">
       <i class="fa fa-external-link-square" aria-hidden="true"></i>
-      <i class="fa fa-plus-square hope" aria-hidden="true"></i>
+      <i class="fa fa-plus-square" aria-hidden="true"></i>
     </div>
   </div>
   <div class="post-content">

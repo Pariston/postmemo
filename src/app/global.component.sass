@@ -12,6 +12,7 @@ h1
   padding: 20px
   @media(max-width: 900px)
     margin-left: $user-block-phone + (2 * $user-block-padding)
+
   #header
     display: flex
     background-color: white
@@ -19,17 +20,22 @@ h1
     padding: 15px 20px
     margin: -20px -20px 20px
     overflow: hidden
+
     #logo:hover
       background: url("images/owlhover.png") no-repeat left center
+
     ul
       margin-left: auto
       align-self: center
       font-size: 20px
+
       li
         transition: 0.5s
         margin-right: 15px
+
       li:hover
         color: white
+
     #logo
       background: url("images/owl-dark.png") no-repeat left center
       line-height: 35px
@@ -39,7 +45,6 @@ h1
       font-size: 20px
       vertical-align: middle
       font-weight: bold
-      //color: #fff
       cursor: pointer
 
       span
@@ -54,9 +59,10 @@ h1
       display: inline
       margin-left: 10px
       line-height: 25px
+
 .container
-  //width: 100%
   margin-right: 290px
+
 .body-block
   position: fixed
   top: 70px
@@ -66,6 +72,7 @@ h1
   background-color: #1f1f1f
   color: #eaeaea
   padding: 20px
+
 .user-block
   position: fixed
   background-color: #1f1f1f
@@ -76,12 +83,14 @@ h1
   width: $user-block-width
   @media(max-width: 900px)
     width: $user-block-phone
+
   .user-main-menu
     background: $hope
     //border-bottom: 1px solid $hope
     padding: 15px 20px
     height: 40px
     margin: -20px -20px 0
+
     .profile-dropdown
       outline: none
       display: inline-block
@@ -89,8 +98,10 @@ h1
       right: 20px
       z-index: 9999
       line-height: 30px
+
       .fa
         cursor: pointer
+
     .profile-dropdown-menu
       visibility: hidden
       position: absolute
@@ -104,13 +115,17 @@ h1
       transition: opacity 0.5s linear
       margin-left: -6px
       border-radius: 4px
+
       li
         padding: 5px 20px
         cursor: pointer
+
         .fa
           margin-right: 15px
+
       li:hover
         background: #eaeaea
+
     .profile-dropdown-menu:before
       content: ""
       width: 0
@@ -134,7 +149,6 @@ h1
       margin-top: 3px
       color: white
       small
-        //color: #929292
         display: block
         margin-top: 2px
 
@@ -152,6 +166,7 @@ h1
     font-size: 14px
     -webkit-transition: 0.5s
     transition: 0.5s
+
     .fa
       margin-right: 20px
       font-size: 18px
@@ -163,13 +178,13 @@ h1
   .navigation-title
     cursor: pointer
     color: white
-    //background-color: #2f2f2f
     border-left: 5px solid $hope
     padding: 17px 25px
     margin: 0 -20px
     font-size: 14px
     -webkit-transition: 0.5s
     transition: 0.5s
+
     .fa
       position: absolute
       right: 20px
@@ -200,4 +215,3 @@ h1
 
 .hideProfile
   visibility: hidden !important
-
