@@ -1,0 +1,22 @@
+<p *ngIf="!post">Ładowanie wpisu...</p>
+
+<div *ngIf="post" class="post-body">
+  <div class="post-header">
+    <img src="{{(globalService.getUser(post.author) | async)?.photoURL}}" class="post-photo male" />
+    <div class="credit">
+      <span *ngIf="(globalService.getUser(post.author) | async)?.firstname" class="author-name">
+        {{(globalService.getUser(post.author) | async)?.firstname}}
+        {{(globalService.getUser(post.author) | async)?.surname}}
+      </span>
+
+      <span *ngIf="!(globalService.getUser(post.author) | async)?.firstname" class="author-name">
+        {{(globalService.getUser(post.author) | async)?.$key}}
+      </span>
+      <small title="{{post?.date}}">{{post?.date | when}}</small>
+    </div>
+    <div class="post-options">
+      <i class="fa fa-plus-square" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div [innerHTML]="getPostContent(post.content)"></div>
+</div>

@@ -41,7 +41,8 @@ CKEDITOR.editorConfig = function( config ) {
     { name: 'insert', items: ['Image', 'Table', 'HorizontalRule', 'SpecialChar']},
     { name: 'paragraphs', items: ['NumberedList', 'BulletedList', 'Outdent', 'Indent', 'Blockquote']},
     { name: 'tools', items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock']}
-  ]
-  config.height = 100
+  ];
+  config.height = 100;
+  config.language = 'pl';
 };
 

@@ -2,14 +2,15 @@ import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CKEditor } from 'ng2-ckeditor';
 import { GlobalService } from '../../global.service';
+import { EditorService } from './editor.service';
 
 @Component({
   selector: 'editor',
   directives: [ CKEditor ],
-  providers: [ GlobalService ],
+  providers: [ GlobalService, EditorService ],
   template: `
     <img src="{{globalService._authentication.photoURL}}" class="photo photo-medium left" />
-    <form [formGroup]="editorForm">  
+    <form [formGroup]="editorForm" (ngSubmit)="editorService.addPost(editorForm.value)">  
       <ckeditor
         formControlName="content"
         [(ngModel)]="content"
@@ -17,7 +18,7 @@ import { GlobalService } from '../../global.service';
       </ckeditor>
       <div class="post-write-container">
         <ul class="post-write">
-          <li><button class="btn btn-second btn-submit right">Dodaj wpis</button></li>
+          <li><button class="btn btn-second btn-submit right">{{editorService.button}}</button></li>
         </ul>
       </div>
     </form>
@@ -39,7 +40,7 @@ import { GlobalService } from '../../global.service';
 })
 
 export class EditorComponent {
-  constructor(private globalService: GlobalService) {
+  constructor(private globalService: GlobalService, private editorService: EditorService) {
     this.editorForm = new FormGroup({
       content: this.contentCtrl
     })
@@ -47,13 +48,9 @@ export class EditorComponent {
 
   @Input() postMode: boolean = false;
   @Input() commentMode: boolean = false;
-  @Input() privateMessageMode: boolean = false;
 
   editorForm: FormGroup;
   contentCtrl = new FormControl("", [ Validators.required ]);
 
-  content: string = "dada";
-  lel() {
-    return this.content;
-  }
+  content: string = "";
 }

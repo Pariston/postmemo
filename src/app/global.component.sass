@@ -14,11 +14,15 @@ h1
     margin-left: $user-block-phone + (2 * $user-block-padding)
 
   #header
+    z-index: 9999
+    position: fixed
+    right: 0
+    left: $user-block-width + (2 * $user-block-padding)
     display: flex
     background-color: white
     color: #6a727a
     padding: 15px 20px
-    margin: -20px -20px 20px
+    margin: -20px 0 0
     overflow: hidden
 
     #logo:hover
@@ -61,9 +65,10 @@ h1
       line-height: 25px
 
 .container
-  margin-right: 290px
+  margin-top: 70px
 
 .body-block
+  display: none //temporary
   position: fixed
   top: 70px
   right: 0

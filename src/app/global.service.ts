@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { AngularFire } from 'angularfire2';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs/Subject';
+import {Observable} from "rxjs/Rx";
 
 @Injectable()
 export class GlobalService {
@@ -15,7 +16,7 @@ export class GlobalService {
     af.database.list('/users')
       .subscribe(response => {
         this.users = response;
-      })
+      });
 
     this.authenticationChange.subscribe((response) => {
       this._authentication = response;
@@ -26,6 +27,10 @@ export class GlobalService {
     if(localItem) this._authentication = JSON.parse(localItem);
     else this._authentication = localItem;
     this.authenticationChange.next(this._authentication);
+  }
+
+  getUser(id): Observable<any> {
+    return this.af.database.object('/users/' + id);
   }
 
   logOut() {

@@ -48,6 +48,9 @@ const barrels: string[] = [
   'app/loginpage',
   'app/registerpage',
   'app/reusable/editor2',
+  'app/postpage',
+  'app/test',
+  'app/post/postadd',
   /** @cli-barrel */
 ];
 

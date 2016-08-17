@@ -3,13 +3,13 @@ import { enableProdMode } from '@angular/core';
 import { GlobalComponent, environment } from './app/';
 import { routerProviders } from './app/app.routes';
 import { FIREBASE_PROVIDERS, defaultFirebase } from 'angularfire2';
-import {disableDeprecatedForms, provideForms, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
-import {PLATFORM_DIRECTIVES} from '@angular/core';
+import { disableDeprecatedForms, provideForms, REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
+import { PLATFORM_DIRECTIVES } from '@angular/core';
 
 if (environment.production) {
   enableProdMode();
 }
-
+enableProdMode();
 bootstrap(GlobalComponent, [ routerProviders,
   disableDeprecatedForms(),
   provideForms(),

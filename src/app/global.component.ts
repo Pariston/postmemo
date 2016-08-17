@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { GlobalService } from './global.service';
 import { AngularFire } from 'angularfire2';
-import {ClickOutsideDirective} from "./reusable/clickOutside/clickOutside";
+import { ClickOutsideDirective } from "./reusable/clickOutside/clickOutside";
+
 
 @Component({
   moduleId: module.id,

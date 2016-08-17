@@ -1,33 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { GlobalService } from '../global.service';
+import { HomepageService } from './homepage.service';
 import { EditorComponent } from '../reusable/editor/editor';
-import { ViewChild } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { DomSanitizationService } from '@angular/platform-browser';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+import { ReversePipe } from '../pipes/reverse';
+import { Observable } from 'rxjs/Rx';
+import { WhenPipe } from '../pipes/when';
 
 @Component({
   moduleId: module.id,
   selector: 'app-homepage',
   templateUrl: 'homepage.component.html',
   styleUrls: ['homepage.component.css'],
-  directives: [ EditorComponent ],
-  providers: [ GlobalService ]
+  pipes: [ AsyncPipe, ReversePipe, WhenPipe ],
+  directives: [ EditorComponent, ROUTER_DIRECTIVES ],
+  providers: [ GlobalService, HomepageService ]
 })
-export class HomepageComponent implements OnInit {
-  @ViewChild(EditorComponent) editor: EditorComponent;
 
-  constructor(private globalService: GlobalService) {
-    //console.log(this.editor.lel());
+export class HomepageComponent implements OnInit, OnDestroy {
+  expandedPosts: number[] = [];
+  posts: any;
+  loaded: boolean = false;
+
+  constructor(private globalService: GlobalService,
+              private homepageService: HomepageService,
+              private sanitizer: DomSanitizationService)
+  {
+    homepageService.posts
+      .subscribe(response => {
+        this.posts = response.reverse();
+        this.loaded = true;
+      })
   }
 
   editorDisplayed: boolean = false;
+
+  getHeight(postDiv: any): boolean {
+    return postDiv.offsetHeight >= 200;
+  }
+
+  expand(index: number) {
+    this.expandedPosts.push(index);
+  }
 
   showEditor() {
     this.editorDisplayed = true;
   }
 
-  cancel() {
-    this.editorDisplayed = false;
+  getPostContent(content: any, index: number): any {
+    return this.sanitizer.bypassSecurityTrustHtml(content);
   }
 
   ngOnInit() {}
-
+  ngOnDestroy() {}
 }
