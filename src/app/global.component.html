@@ -3,7 +3,9 @@ xx
 </div>
 
 <div *ngIf="globalService._authentication" class="user-block left">
-  <div class="user-main-menu">
+  <div class="user-main-menu"
+       [class.male]="globalService._authentication?.gender == 'male'"
+       [class.female]="globalService._authentication?.gender == 'female'">
     <img src="{{userPhotoURL}}" class="avatar-mini"/>
     <div class="credit">
       <div tabindex="0" class="profile-dropdown"><i class="fa fa-sort-desc" aria-hidden="true"></i>
@@ -18,14 +20,20 @@ xx
     </div>
   </div>
   <!--<div class="something"></div>-->
-  <div class="navigation-title" (click)="manageNavigation()">Nawigacja <i class="fa" [class.fa-minus]="navigationExpanded" [class.fa-plus]="!navigationExpanded" aria-hidden="true"></i></div>
+  <div class="navigation-title"
+       [class.male]="globalService._authentication?.gender == 'male'"
+       [class.female]="globalService._authentication?.gender == 'female'"
+       (click)="manageNavigation()">Nawigacja <i class="fa" [class.fa-minus]="navigationExpanded" [class.fa-plus]="!navigationExpanded" aria-hidden="true"></i></div>
   <ul class="navigation" [class.show]="navigationExpanded">
     <li><i class="fa fa-home fa-5" aria-hidden="true"></i> Strona główna</li>
     <li><i class="fa fa-users" aria-hidden="true"></i>Użytkownicy</li>
     <li><i class="fa fa-heart" aria-hidden="true"></i>Moje subskrypcje</li>
     <li><i class="fa fa-tags" aria-hidden="true"></i>Moje tagi</li>
   </ul>
-  <div class="navigation-title" (click)="manageProfileNavigation()">Profil <i class="fa" [class.fa-minus]="navigationProfileExpanded" [class.fa-plus]="!navigationProfileExpanded" aria-hidden="true"></i></div>
+  <div class="navigation-title"
+       [class.male]="globalService._authentication?.gender == 'male'"
+       [class.female]="globalService._authentication?.gender == 'female'"
+       (click)="manageProfileNavigation()">Profil <i class="fa" [class.fa-minus]="navigationProfileExpanded" [class.fa-plus]="!navigationProfileExpanded" aria-hidden="true"></i></div>
   <ul class="navigation" [class.show]="navigationProfileExpanded">
     <li><i class="fa fa-home fa-5" aria-hidden="true"></i> Strona główna</li>
     <li><i class="fa fa-users" aria-hidden="true"></i>Użytkownicy</li>

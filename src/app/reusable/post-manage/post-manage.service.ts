@@ -4,7 +4,7 @@ import { GlobalService } from '../../global.service';
 import { Router } from '@angular/router';
 
 @Injectable()
-export class EditorService {
+export class PostManageService {
   author: any;
   button: string = "Dodaj wpis";
 
@@ -14,13 +14,14 @@ export class EditorService {
     this.author = globalService._authentication;
   }
 
-  addPost(post: any) {
+  addPost(post: any, tags: any) {
     this.button = "Operacja w toku...";
     this.af.database.list('/posts')
       .push({
         content: post.content,
         author: this.author.$key,
-        date: new Date().toLocaleString()
+        date: new Date().toLocaleString(),
+        tags: tags
       }).then(
         _ => {
           setTimeout(function() {

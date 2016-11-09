@@ -1,12 +1,10 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { GlobalService } from '../global.service';
 import { HomepageService } from './homepage.service';
-import { EditorComponent } from '../reusable/editor/editor';
 import { AsyncPipe } from '@angular/common';
 import { DomSanitizationService } from '@angular/platform-browser';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { ReversePipe } from '../pipes/reverse';
-import { Observable } from 'rxjs/Rx';
 import { WhenPipe } from '../pipes/when';
 
 @Component({
@@ -15,7 +13,7 @@ import { WhenPipe } from '../pipes/when';
   templateUrl: 'homepage.component.html',
   styleUrls: ['homepage.component.css'],
   pipes: [ AsyncPipe, ReversePipe, WhenPipe ],
-  directives: [ EditorComponent, ROUTER_DIRECTIVES ],
+  directives: [ ROUTER_DIRECTIVES ],
   providers: [ GlobalService, HomepageService ]
 })
 
@@ -26,7 +24,8 @@ export class HomepageComponent implements OnInit, OnDestroy {
 
   constructor(private globalService: GlobalService,
               private homepageService: HomepageService,
-              private sanitizer: DomSanitizationService)
+              private sanitizer: DomSanitizationService,
+              private router: Router)
   {
     homepageService.posts
       .subscribe(response => {
@@ -46,7 +45,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
   }
 
   showEditor() {
-    this.editorDisplayed = true;
+    this.router.navigate(['/post/create']);
   }
 
   getPostContent(content: any, index: number): any {

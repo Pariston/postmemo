@@ -1,0 +1,20 @@
+<ul id="tags">
+  <li *ngFor="let tag of tags; let i = index">
+    {{tag}} <i class="fa fa-times close" aria-hidden="true" (click)="removeTag(i)"></i>
+  </li>
+</ul>
+
+<p><input type="text" [(ngModel)]="tagsInput" (ngModelChange)="manageTags(lel.value)" name="tags" #lel/></p>
+<img src="{{globalService._authentication.photoURL}}" class="photo photo-medium left" />
+<form [formGroup]="editorForm" (ngSubmit)="service.addPost(editorForm.value, tags)">
+  <ckeditor
+    formControlName="content"
+    [(ngModel)]="content"
+    [config]="{ skin: 'moono-dark'}">
+  </ckeditor>
+  <div class="post-write-container">
+    <ul class="post-write">
+      <li><button class="btn btn-second btn-submit right">{{service.button}}</button></li>
+    </ul>
+  </div>
+</form>

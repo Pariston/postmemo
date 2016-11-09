@@ -2,9 +2,6 @@
 
 <div *ngIf="loaded">
   <div class="editor">
-    <div class="editor-body" *ngIf="editorDisplayed">
-      <editor [postMode]="true"></editor>
-    </div>
     <p *ngIf="!editorDisplayed">
       <button class="btn btn-second btn-submit right" (click)="showEditor()">Dodaj wpis</button>
     </p>
@@ -46,6 +43,10 @@
               class="expandButton">
         Pokaż więcej
       </button>
+
+      <ul *ngIf="post.tags" class="tags">
+        <li *ngFor="let tag of post.tags" [routerLink]="['/tag', tag]">{{tag}}</li>
+      </ul>
     </div>
 
     <div class="post-footer">

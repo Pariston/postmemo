@@ -335,7 +335,20 @@ input[type="checkbox"]:checked + label:before
   height: 50px
 
 .male
-  border-right: 3px solid $hope
+  background-color: $hope
+  border-color: $hope
 
 .female
-  border-right: 3px solid $scarlet
+  background-color: $scarlet
+  border-color: $scarlet
+
+ul.tags
+  list-style: none
+  li
+    cursor: pointer
+    background: #3f3f3f
+    display: inline-block
+    margin-right: 5px
+    padding: 5px 10px
+  li:hover
+    background: #4f4f4f

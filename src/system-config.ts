@@ -51,6 +51,8 @@ const barrels: string[] = [
   'app/postpage',
   'app/test',
   'app/post/postadd',
+  'app/tagpage',
+  'app/reusable/post-list',
   /** @cli-barrel */
 ];
 
